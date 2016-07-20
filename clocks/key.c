@@ -51,8 +51,8 @@ int main(int argc, char **argv){
 	}
 
     int inputs = atoi(argv[1]);
-    int ins[] = {(inputs/10)%10, (inputs/100)%10, (inputs/10)%10, inputs%10};
-    
+//    int ins[] = {(inputs/10)%10, (inputs/100)%10, (inputs/10)%10, inputs%10};
+    int ins[] = {5,6,7,8};
 	for(i=0;i<4;i++) {
 		pinMode     (lines  [i],OUTPUT);
 		pinMode     (number [i],OUTPUT);
@@ -111,8 +111,9 @@ int main(int argc, char **argv){
                 digitalWrite(number [0],HIGH);
                 digitalWrite(number [3],HIGH);
             }                    
+			delay(1);
 		    digitalWrite(lines[i],LOW);
-		    delay(50);
+		    //delay(50);
 	    }
     }
 
