@@ -29,7 +29,7 @@
 #include <wiringPi.h>
 //#include "xdo.h"
 //char KEY[]={29,25,24,23,22,21,14,13,12,7,11,10};
-char lines[]={22,23,24,25};
+char lines[]={25,24,23,22};
 char number[]={26,27,28,29};
 
 int i,j,n;
@@ -66,7 +66,7 @@ int main(int argc, char **argv){
 	    {
 		    digitalWrite(lines[i],HIGH);
 	        for(i=0;i<4;i++) {
-		        digitalWrite(number [i],LOW);
+		       digitalWrite(number [i],LOW);
 	        }
             if(ins[i]==1)
             {
@@ -111,7 +111,7 @@ int main(int argc, char **argv){
                 digitalWrite(number [0],HIGH);
                 digitalWrite(number [3],HIGH);
             }                    
-		    digitalWrite(lines[j],LOW);
+		    digitalWrite(lines[i],LOW);
 		    delay(50);
 	    }
     }
