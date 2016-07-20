@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1439061705 source:/home/pi/keyboard/keyboard/main.c
+	<stdio.h>
+	<stdlib.h>
+	<wiringPi.h>
+	<errno.h>
+
