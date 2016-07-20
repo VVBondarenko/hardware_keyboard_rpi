@@ -65,8 +65,8 @@ int main(int argc, char **argv){
 	    for(i=0;i<4;i++)
 	    {
 		    digitalWrite(lines[i],HIGH);
-	        for(i=0;i<4;i++) {
-		       digitalWrite(number [i],LOW);
+	        for(j=0;j<4;j++) {
+		        digitalWrite(number [j],LOW);
 	        }
             if(ins[i]==1)
             {
