@@ -27,23 +27,14 @@
 #include <errno.h>
 
 #include <wiringPi.h>
-//#include "xdo.h"
-//char KEY[]={29,25,24,23,22,21,14,13,12,7,11,10};
+
 char lines[]={25,24,23,22};
 char number[]={26,27,28,29};
 
 int i,j,n;
 int Gx=0,Gy=0;
 
-//char qwerty[12][12]={
-/*char qwerty[3][12][12]={*/
-/*			{"q","w","e","r","t","y","u","i","o","p","0","0"},*/
-/*			{"0","a","s","d","f","g","h","j","k","l","0","0"},*/
-/*			{"0","0","z","x","c","v","b","n","m","0","0","0"}*/
-/*		};*/
 int main(int argc, char **argv){
-	//xdo_t *xdo=xdo_new(NULL);
-	//xdo_keysequence(xdo, CURRENTWINDOW,"",)
 	if (wiringPiSetup() < 0)
 	{
 	    fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
@@ -51,8 +42,8 @@ int main(int argc, char **argv){
 	}
 
     int inputs = atoi(argv[1]);
-//    int ins[] = {(inputs/10)%10, (inputs/100)%10, (inputs/10)%10, inputs%10};
-    int ins[] = {5,6,7,8};
+    int ins[] = {(inputs/1000), (inputs/100)%10, (inputs/10)%10, inputs%10};
+//    int ins[] = {5,6,7,8};
 	for(i=0;i<4;i++) {
 		pinMode     (lines  [i],OUTPUT);
 		pinMode     (number [i],OUTPUT);
@@ -119,10 +110,3 @@ int main(int argc, char **argv){
 
 
 }
-/*
-ToDO:
-
-Add something like "trigger" buttons (Shift as one of them, Num)(one of them Fn if needed)
-stop using xdotool and use directly X11
-find something that will look like better keyboard
-*/
