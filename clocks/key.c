@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-
+#include <time.h>
 #include <wiringPi.h>
 
 char lines[]={25,24,23,22};
@@ -40,10 +40,14 @@ int main(int argc, char **argv){
 	    fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
 	    return 1 ;
 	}
-    int delay_time = atoi(argv[1]);
-    int inputs = atoi(argv[2]);
-    int ins[] = {(inputs/1000), (inputs/100)%10, (inputs/10)%10, inputs%10};
-//    int ins[] = {5,6,7,8};
+    time_t rawtime;
+    struct tm * ptm;
+    int delay_time = 6;//atoi(argv[1]);
+//    int inputs = atoi(argv[2]);
+//    int ins[] = {(inputs/1000), (inputs/100)%10, (inputs/10)%10, inputs%10};
+    int ins[] = {(ptm->tm_hour+3)%24/10,(ptm->tm_hour+3)%24%10,
+                ptm->tm_min/10,ptm->tm_min%10};
+
 	for(i=0;i<4;i++) {
 		pinMode     (lines  [i],OUTPUT);
 		pinMode     (number [i],OUTPUT);
@@ -55,6 +59,15 @@ int main(int argc, char **argv){
     {
 	    for(i=0;i<4;i++)
 	    {
+	        //retriving current time from system
+            time ( &rawtime );
+            ptm = gmtime ( &rawtime );
+            ins[0] = (ptm->tm_hour+3)%24/10;
+            ins[1] = (ptm->tm_hour+3)%24%10;
+            ins[2] = ptm->tm_min/10;
+            ins[3] = ptm->tm_min%10;
+            
+            //drawing current time on nixie
 		    digitalWrite(lines[i],HIGH);
 	        for(j=0;j<4;j++) {
 		        digitalWrite(number [j],LOW);
@@ -104,7 +117,6 @@ int main(int argc, char **argv){
             }                    
 			delay(delay_time);
 		    digitalWrite(lines[i],LOW);
-		    //delay(50);
 	    }
     }
 
