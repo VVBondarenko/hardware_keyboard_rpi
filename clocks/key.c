@@ -42,7 +42,7 @@ int main(int argc, char **argv){
 	}
     time_t rawtime;
     struct tm * ptm;
-    int delay_time = 6;//atoi(argv[1]);
+//    int delay_time = 6;//atoi(argv[1]);
 //    int inputs = atoi(argv[2]);
 //    int ins[] = {(inputs/1000), (inputs/100)%10, (inputs/10)%10, inputs%10};
     int ins[] = {(ptm->tm_hour+3)%24/10,(ptm->tm_hour+3)%24%10,
@@ -115,7 +115,7 @@ int main(int argc, char **argv){
                 digitalWrite(number [0],HIGH);
                 digitalWrite(number [3],HIGH);
             }                    
-			delay(delay_time);
+			delay(6);
 		    digitalWrite(lines[i],LOW);
 	    }
     }
