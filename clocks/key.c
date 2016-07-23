@@ -40,8 +40,8 @@ int main(int argc, char **argv){
 	    fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
 	    return 1 ;
 	}
-
-    int inputs = atoi(argv[1]);
+    int delay_time = atoi(argv[1]);
+    int inputs = atoi(argv[2]);
     int ins[] = {(inputs/1000), (inputs/100)%10, (inputs/10)%10, inputs%10};
 //    int ins[] = {5,6,7,8};
 	for(i=0;i<4;i++) {
@@ -102,7 +102,7 @@ int main(int argc, char **argv){
                 digitalWrite(number [0],HIGH);
                 digitalWrite(number [3],HIGH);
             }                    
-			delay(1);
+			delay(delay_time);
 		    digitalWrite(lines[i],LOW);
 		    //delay(50);
 	    }
