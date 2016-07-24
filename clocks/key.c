@@ -29,7 +29,7 @@
 #include <wiringPi.h>
 
 char lines[]={25,24,23,22};
-char number[]={26,27,28,29};
+char number[]={26,27,29,28};
 
 int i,j,n;
 int Gx=0,Gy=0;
